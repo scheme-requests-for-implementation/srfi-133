@@ -58,28 +58,38 @@ None at this time.
 
 <h1 class="nonheader">Table of Contents</h1>
     <ul class="outer">
-      <li>1. <a href="#Abstract">Abstract</a></li>
-      <li>2. <a href="#Rationale">Rationale</a></li>
-      <li>3. <a href="#ProcIndex">Procedure Index</a></li>
+      <li>1. <a href="#Status">Status</a></li>
+      <li>2. <a href="#Abstract">Abstract</a></li>
+      <li>3. <a href="#Rationale">Rationale</a></li>
+      <li>4. <a href="#ProcIndex">Procedure Index</a></li>
       <li>
-        4. <a href="#Procs">Procedures</a>
+        5. <a href="#Procs">Procedures</a>
         <ul>
-          <li>4.1. <a href="#Constructors">Constructors</a></li>
-          <li>4.2. <a href="#Predicates">Predicates</a></li>
-          <li>4.3. <a href="#Selectors">Selectors</a></li>
-          <li>4.4. <a href="#Iteration">Iteration</a></li>
-          <li>4.5. <a href="#Searching">Searching</a></li>
-          <li>4.6. <a href="#Mutators">Mutators</a></li>
-          <li>4.7. <a href="#Conversion">Conversion</a></li>
+          <li>5.1. <a href="#Constructors">Constructors</a></li>
+          <li>5.2. <a href="#Predicates">Predicates</a></li>
+          <li>5.3. <a href="#Selectors">Selectors</a></li>
+          <li>5.4. <a href="#Iteration">Iteration</a></li>
+          <li>5.5. <a href="#Searching">Searching</a></li>
+          <li>5.6. <a href="#Mutators">Mutators</a></li>
+          <li>5.7. <a href="#Conversion">Conversion</a></li>
         </ul>
       </li>
-      <li>5. <a href="#SampImpl">Sample Implementation</a></li>
-      <li>6. <a href="#Acknowledgements">Acknowledgements</a></li>
-      <li>7. <a href="#References">References</a></li>
-      <li>8. <a href="#Copyright">Copyright</a></li>
+      <li>6. <a href="#SampImpl">Sample Implementation</a></li>
+      <li>7. <a href="#Acknowledgements">Acknowledgements</a></li>
+      <li>8. <a href="#References">References</a></li>
+      <li>9. <a href="#Copyright">Copyright</a></li>
     </ul>
 
-    <h1 class="nonheader"><a name="Abstract">1. Abstract</a></h1>
+    <h1 class="nonheader"><a name="Status">1. Status</a></h1>
+
+    <p>This SRFI is currently in <em>draft</em> status. Here is <a href="http://srfi.schemers.org/srfi-process.html">an explanation</a> of each status that a SRFI can hold.  To provide input on this SRFI, please send email to <code><a href="mailto:srfi+minus+132+at+srfi+dotschemers+dot+org">srfi-132@<span class="antispam">nospam</span>srfi.schemers.org</a></code>.  To subscribe to the list, follow <a href="http://srfi.schemers.org/srfi-list-subscribe.html">these instructions</a>.  You can access previous messages via the mailing list <a href="http://srfi-email.schemers.org/srfi-132">archive</a>.</p>
+    <ul>
+      <li>Received: 2015/12/9</li>
+      <li>60-day deadline: 2016/2/7</li>
+      <li>Draft #1 published: 2015/12/9</li>
+    </ul>
+
+    <h1 class="nonheader"><a name="Abstract">2. Abstract</a></h1>
     <p>
       This <a href="#SRFI">SRFI</a> proposes a comprehensive
       library of vector operations accompanied by a freely
@@ -91,7 +101,7 @@ None at this time.
     </p>
 
 
-    <h1 class="nonheader"><a name="Rationale">2. Rationale</a></h1>
+    <h1 class="nonheader"><a name="Rationale">3. Rationale</a></h1>
     <p>
       <a href="#R5RS">R5RS</a> provides very few list-processing
       procedures, for which reason <a href="#SRFI-1">SRFI 1</a> exists.  However,
@@ -154,7 +164,7 @@ None at this time.
     </p>
 
     <h1 class="nonheader">
-      <a name="ProcIndex">3. Procedure Index</a>
+      <a name="ProcIndex">4. Procedure Index</a>
     </h1>
     <p>
       Here is an index of the procedures provided by this package.
@@ -311,7 +321,7 @@ None at this time.
       </dd>
     </dl>
 
-    <h1 class="nonheader"><a name="Procs">4. Procedures</a></h1>
+    <h1 class="nonheader"><a name="Procs">5. Procedures</a></h1>
     <p>
       In this section containing specifications of procedures, the
       following notation is used to specify parameters and return
@@ -451,7 +461,7 @@ None at this time.
       automatically returns <tt>#f</tt> if the vectors' lengths vary.
     </p>
 
-    <h2><a name="Constructors">4.1. Constructors</a></h2>
+    <h2><a name="Constructors">5.1. Constructors</a></h2>
     <dl>
       <dt class="proc-spec">
         <a name="make-vector">
@@ -849,7 +859,7 @@ None at this time.
       </dd>
 
 
-    <h2><a name="Predicates">4.2. Predicates</a></h2>
+    <h2><a name="Predicates">5.2. Predicates</a></h2>
     <dl>
       <dt class="proc-spec">
         <a name="vector-p">
@@ -1082,7 +1092,7 @@ None at this time.
       </dd>
     </dl>
 
-    <h2><a name="Selectors">4.3. Selectors</a></h2>
+    <h2><a name="Selectors">5.3. Selectors</a></h2>
     <dl>
       <dt class="proc-spec">
         <a name="vector-ref">
@@ -1143,7 +1153,7 @@ None at this time.
       </dd>
     </dl>
 
-    <h2><a name="Iteration">4.4. Iteration</a></h2>
+    <h2><a name="Iteration">5.4. Iteration</a></h2>
     <dl>
       <dt class="proc-spec">
         <a name="vector-fold">
@@ -1555,7 +1565,7 @@ zot</pre>
       </dd>
     </dl>
 
-    <h2><a name="Searching">4.5. Searching</a></h2>
+    <h2><a name="Searching">5.5. Searching</a></h2>
     <dl>
       <dt class="proc-spec">
         <a name="vector-index">
@@ -1809,7 +1819,7 @@ zot</pre>
       </dd>
     </dl>
 
-    <h2><a name="Mutators">4.6. Mutators</a></h2>
+    <h2><a name="Mutators">5.6. Mutators</a></h2>
     <dl>
       <dt class="proc-spec">
         <a name="vector-set-bang">
@@ -1984,7 +1994,7 @@ zot</pre>
     </dl>
 
     <h1 class="nonheader">
-      <a name="SampImpl">5. Sample Implementation</a>
+      <a name="SampImpl">6. Sample Implementation</a>
     </h1>
     <p>
       The sample implementation is (not yet) in the repository of this SRFI.
@@ -1999,7 +2009,7 @@ zot</pre>
     </p>
 
     <h1 class="nonheader">
-      <a name="Acknowledgements">6. Acknowledgements</a>
+      <a name="Acknowledgements">7. Acknowledgements</a>
     </h1>
     <p>
       Thanks to Olin Shivers for his wonderfully complete
@@ -2018,7 +2028,7 @@ zot</pre>
       attention to the SRFI.
     </p>
 
-    <h1 class="nonheader"><a name="References">7. References</a></h1>
+    <h1 class="nonheader"><a name="References">8. References</a></h1>
     <dl>
       <dt class="ref"><a name="R5RS">R5RS</a></dt>
       <dd>
@@ -2141,7 +2151,7 @@ zot</pre>
       </dd>
     </dl>
 
-    <h1 class="nonheader"><a name="Copyright">8. Copyright</a></h1>
+    <h1 class="nonheader"><a name="Copyright">9. Copyright</a></h1>
     <p>
      Copyright (C) Taylor Campbell (2003).  All rights reserved.
     </p>
