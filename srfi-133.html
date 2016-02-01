@@ -160,6 +160,7 @@ None at this time.
 
     <ul class="indented">
       <li><tt><a href="#vector-unfold-bang">vector-unfold!</a></tt></li>
+      <li><tt><a href="#vector-unfold-right-bang">vector-unfold-right!</a></tt></li>
       <li><tt><a href="#vector-append-subvectors">vector-append-subvectors</a></tt></li>
       <li><tt><a href="#vector-cumulate">vector-cumulate</a></tt></li>
       <li><tt><a href="#vector-partition">vector-partition</a></tt></li>
@@ -314,6 +315,7 @@ None at this time.
           <a href="#vector-reverse-copy-bang">vector-reverse-copy!</a>
           <br />
           <a href="#vector-unfold-bang">vector-unfold!</a></i>
+          <a href="#vector-unfold-right-bang">vector-unfold-right!</a></i>
           <br />
           <br />
         </code>
@@ -406,7 +408,7 @@ None at this time.
       <dt class="type-spec">f</dt>
       <dd>
         The argument in this place must be a function of one or more
-        arguments, returning exactly one value.
+        arguments, which returns (except as noted otherwise) exactly one value.
         <br />
         <br />
       </dd>
@@ -498,9 +500,10 @@ None at this time.
       </dt>
       <dd>
         [<a href="#R7RS-small"><i>R7RS-small</i></a>] Creates and returns a vector
-        of size <tt><i>size</i></tt>, optionally filling it with
-        <tt><i>fill</i></tt>.  The default value of
-        <tt><i>fill</i></tt> is implementation-defined.
+        of size <tt><i>size</i></tt>.
+        If <i>fill</i> is specified, all the elements of the vector
+        are initialized to <i>fill</i>.  Otherwise, their contents
+        are indeterminate.
         <br />
         <br />
         Example:
@@ -614,6 +617,7 @@ None at this time.
         Like <tt><a href="#vector-unfold">vector-unfold</a></tt>, but
         it uses <tt><i>f</i></tt> to generate elements from
         right-to-left, rather than left-to-right.
+        The first index used is <i>length</i> - 1.
         Note that the termination condition is different from
         the <code>unfold-right</code> procedure of <a href="#SRFI 1">SRFI 1</a>.
         <br />
@@ -621,16 +625,16 @@ None at this time.
         Examples:
         <br />
         <br />
-        Construct a vector in reverse of the integers in the range
-        [0,<tt><i>n</i></tt>).
+        Construct a vector of pairs of non-negative integers whose
+        values sum to 4.
         <br />
         <br />
         <code class="example-call">
-          (vector-unfold-right (&lambda; (i x) (values x (+ x 1))) <i>n</i> 0)
+          (vector-unfold-right (&lambda; (i x) (values (cons i x) (+ x 1))) 5 0)
         </code>
         <br />
         <code class="example-value">
-          #(<i>n-1</i> <i>n-2</i> ... 2 1 0)
+          #((0 . 4) (1 . 3) (2 . 2) (3 . 1) (4 . 0))
         </code>
         <br />
         <br />
@@ -869,7 +873,7 @@ None at this time.
         </code>
         <br />
         <code class="example-value">
-          #(a b c h i)
+          #(a b h i)
         </code>
         <br />
         <br />
@@ -1122,7 +1126,7 @@ None at this time.
         returns the value that the location in <tt><i>vec</i></tt> at
         <tt><i>i</i></tt> is mapped to in the store.  Indexing is based
         on zero.  <tt><i>I</i></tt> must be within the range [0,
-        <tt>(<a href="vector-length">vector-length</a>
+        <tt>(<a href="#vector-length">vector-length</a>
              <i>vec</i>)</tt>).
         <br />
         <br />
@@ -1287,10 +1291,10 @@ None at this time.
         Constructs a new vector of the shortest size of the vector
         arguments.  Each element at index <tt><i>i</i></tt> of the new
         vector is mapped from the old vectors by
-        <tt>(<i>f</i> (<a href="vector-ref">vector-ref</a>
+        <tt>(<i>f</i> (<a href="#vector-ref">vector-ref</a>
               <i>vec<sub>1</sub></i>
               <i>i</i>)
-             (<a href="vector-ref">vector-ref</a>
+             (<a href="#vector-ref">vector-ref</a>
               <i>vec<sub>2</sub></i>
               <i>i</i>)
              ...)</tt>.
@@ -1405,7 +1409,7 @@ None at this time.
         <tt><i>length</i></tt> is the length of the smallest vector
         argument passed,
         In contrast with
-        <tt><a href="vector-map">vector-map</a></tt>, <tt><i>f</i></tt>
+        <tt><a href="#vector-map">vector-map</a></tt>, <tt><i>f</i></tt>
         is reliably applied to each subsequent element, starting at
         index 0, in the vectors.
         <br />
@@ -1659,7 +1663,11 @@ zot</pre>
         and
         <tt><a href="#vector-index-right">vector-index-right</a></tt>,
         but instead of searching left to right or right to left, this
-        performs a binary search.  <tt><i>cmp</i></tt> should be a
+        performs a binary search.
+        If there is more than one element of <i>vec</i> that matches
+        <i>value</i> in the sense of <i>cmp</i>,
+        <code>vector-binary-search</code> may return any of them.</p>
+        <p><tt><i>cmp</i></tt> should be a
         procedure of two arguments and return a negative integer, which
         indicates that its first argument is less than its second,
         zero, which indicates that they are equal, or a positive
@@ -1722,9 +1730,9 @@ zot</pre>
       <dd>
         If, for every index <tt><i>i</i></tt> between 0 and the length
         of the shortest vector argument, the set of elements
-        <tt>(<a href="vector-ref">vector-ref</a> <i>vec<sub>1</sub></i>
+        <tt>(<a href="#vector-ref">vector-ref</a> <i>vec<sub>1</sub></i>
                                                  <i>i</i>)
-            (<a href="vector-ref">vector-ref</a> <i>vec<sub>2</sub></i>
+            (<a href="#vector-ref">vector-ref</a> <i>vec<sub>2</sub></i>
                                                  <i>i</i>)
             ...</tt>
         satisfies <tt><i>pred?</i></tt>, <tt>vector-every</tt> returns
@@ -1759,7 +1767,7 @@ zot</pre>
     <h2><a name="Ranges">5.6. Ranges</a></h2>
     <p>The following functions do not directly involve
     vectors, but can be used to do folding and imperative
-    iteration over portions of vector indexes, if the
+    iteration over ranges of vector indexes, if the
     procedures <i>kons</i> and <i>f</i> have access to a source vector.</p>
     <dl>
       <dt class="proc-spec">
@@ -1882,10 +1890,10 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        Like <tt><a href="vector-copy-bang">vector-copy!</a></tt>, but
+        Like <tt><a href="#vector-copy-bang">vector-copy!</a></tt>, but
         the elements appear in <tt><i>to</i></tt> in reverse order.
         <tt>
-          (<a href="vector-reverse-bang">vector-reverse!</a>
+          (<a href="#vector-reverse-bang">vector-reverse!</a>
            <i>target</i>
            <i>tstart</i>
            <i>send</i>)
@@ -1896,16 +1904,28 @@ zot</pre>
       </dd>
       <dt class="proc-spec">
         <a name="vector-unfold-bang">
-          (vector-unfold! vec i f length initial-seed ...</i>)
+          (vector-unfold! vec start end f initial-seed ...</i>)
           -&gt; unspecified
         </a>
       </dt>
       <dd>
-        Like <tt><a href="vector-unfold">vector-unfold</a></tt>, but
+        Like <tt><a href="#vector-unfold">vector-unfold</a></tt>, but
         the elements are copied into the vector <i>vec</i> starting
-        at element <i>i</i> rather than into a newly allocated vector.
-        Terminates either when <i>n</i> elements have been generated,
-        or the last element of <i>vec</i> has been filled.
+        at element <i>start</i> rather than into a newly allocated vector.
+        Terminates when <i>end-start+1</i> elements have been generated.
+        <br />
+        <br />
+      </dd>
+      <dt class="proc-spec">
+        <a name="vector-unfold-right-bang">
+          (vector-unfold-right! vec start end f initial-seed ...</i>)
+          -&gt; unspecified
+        </a>
+      </dt>
+      <dd>
+        Like <tt><a href="#vector-unfold-bang">vector-unfold!</a></tt>, but the
+        elements are copied in reverse order into the vector <i>vec</i>
+        starting at the index preceding <i>end</i>.
         <br />
         <br />
       </dd>
@@ -1948,7 +1968,7 @@ zot</pre>
       </dt>
       <dd>
         Like <tt><a href="#list-to-vector">list-&gt;vector</a></tt>,
-        but the resulting list contains the elements in reverse of
+        but the resulting vector contains the elements in reverse of
         <tt><i>proper-list</i></tt>.
         <br />
         <br />
