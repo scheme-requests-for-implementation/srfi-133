@@ -51,7 +51,7 @@
 Vector Library (R7RS-compatible)
 
 <H1>Author</H1>
-Taylor Campbell (with additions and modifications by John Cowan)
+John Cowan (based on SRFI 43 by Taylor Campbell)
 
 <h1>Issues</h1>
 
@@ -71,9 +71,8 @@ None at this time.
           <li>5.3. <a href="#Selectors">Selectors</a></li>
           <li>5.4. <a href="#Iteration">Iteration</a></li>
           <li>5.5. <a href="#Searching">Searching</a></li>
-          <li>5.6. <a href="#Ranges">Ranges</a></li>
-          <li>5.7. <a href="#Mutators">Mutators</a></li>
-          <li>5.8. <a href="#Conversion">Conversion</a></li>
+          <li>5.6. <a href="#Mutators">Mutators</a></li>
+          <li>5.7. <a href="#Conversion">Conversion</a></li>
         </ul>
       </li>
       <li>6. <a href="#SampImpl">Sample Implementation</a></li>
@@ -127,8 +126,11 @@ None at this time.
       <li><tt><a href="#vector-fill-bang">vector-fill!</a></tt></li>
     </ul>
     <p>
-      <a href="#R7RS-small">R7RS-small</a> provides seven additional 
-      vector procedures,  bringing vectors and lists to approximate parity:
+      <a href="#R7RS-small">R7RS-small</a> added support for
+      <i>start</i> and <i>end</i> arguments to <code>vector->list</code>,
+      <code>list->vector</code> and <code>vector-fill!</code>.  It also
+      provided seven additional vector procedures,  bringing vectors
+      and lists to approximate parity:
     </p>
 
     <ul class="indented">
@@ -262,20 +264,6 @@ None at this time.
       </dd>
 
       <dt class="proc-index">
-        &middot;&nbsp;<a href="#Ranges">Ranges</a>
-        <br />
-        <br />
-      </dt>
-      <dd>
-        <code>
-          <a href="#range-fold">range-fold</a>
-          <a href="#range-for-each">range-for-each</a>
-          <br />
-          <br />
-        </code>
-      </dd>
-
-      <dt class="proc-index">
         &middot;&nbsp;<a href="#Searching">Searching</a>
         <br />
         <br />
@@ -327,16 +315,6 @@ None at this time.
         <br />
         <br />
       </dt>
-      <dd>
-        <code>
-          <i><a href="#vector-to-list">vector-&gt;list</a></i>
-          <a href="#reverse-vector-to-list">reverse-vector-&gt;list</a>
-          <br />
-          <i><a href="#list-to-vector">list-&gt;vector</a></i>
-          <a href="#reverse-list-to-vector">reverse-list-&gt;vector</a>
-          <br />
-        </code>
-      </dd>
       <dd>
         <code>
           <i><a href="#vector-to-list">vector-&gt;list</a></i>
@@ -1667,7 +1645,7 @@ zot</pre>
         performs a binary search.
         If there is more than one element of <i>vec</i> that matches
         <i>value</i> in the sense of <i>cmp</i>,
-        <code>vector-binary-search</code> may return any of them.</p>
+        <code>vector-binary-search</code> may return the index of any of them.</p>
         <p><tt><i>cmp</i></tt> should be a
         procedure of two arguments and return a negative integer, which
         indicates that its first argument is less than its second,
@@ -1765,41 +1743,6 @@ zot</pre>
       </dd>
     </dl>
 
-    <h2><a name="Ranges">5.6. Ranges</a></h2>
-    <p>The following functions do not directly involve
-    vectors, but can be used to do folding and imperative
-    iteration over ranges of vector indexes, if the
-    procedures <i>kons</i> and <i>f</i> have access to a source vector.</p>
-    <dl>
-      <dt class="proc-spec">
-        <a name="range-fold">
-          (range-fold <i>kons knil start end</i>)
-          -&gt; value
-        </a>
-      </dt>
-      <dd>
-        Iterates over a range of exact integers from <i>start</i>
-        (inclusive) to <i>end</i> (exclusive), folding <i>kons</i>
-        over each of them.  For each integer, <i>kons</i> is invoked
-        with two arguments, the integer and the current seed (whose
-        initial value is <i>knil</i>), and the seed is set to the
-        value returned by <i>kons</i>.  When all integers have been
-        folded over, the last value returned by <i>kons</i> is returned;
-        if <i>kons</i> was never called, <i>knil</i> is returned.
-        <br />
-        <br />
-      </dd>
-
-      <dt class="proc-spec">
-        <a name="range-for-each">
-          (range-for-each <i>f start end</i>)
-          -&gt; unspecified
-        </a>
-      </dt>
-      <dd>
-        Invokes <i>f</i> on every integer from <i>start</i>
-        (inclusive) to <i>end</i> (exclusive).
-    </dl>
     <h2><a name="Mutators">5.7. Mutators</a></h2>
     <dl>
       <dt class="proc-spec">
@@ -1905,7 +1848,7 @@ zot</pre>
       </dd>
       <dt class="proc-spec">
         <a name="vector-unfold-bang">
-          (vector-unfold! vec start end f initial-seed ...</i>)
+          (vector-unfold! f vec start end initial-seed ...</i>)
           -&gt; unspecified
         </a>
       </dt>
@@ -1919,7 +1862,7 @@ zot</pre>
       </dd>
       <dt class="proc-spec">
         <a name="vector-unfold-right-bang">
-          (vector-unfold-right! vec start end f initial-seed ...</i>)
+          (vector-unfold-right! f vec start end initial-seed ...</i>)
           -&gt; unspecified
         </a>
       </dt>
@@ -1947,6 +1890,22 @@ zot</pre>
         between <tt><i>start</i></tt>, which defaults to <tt>0</tt>,
         and <tt><i>end</i></tt>, which defaults to the length of
         <tt><i>vec</i></tt>.
+        <br />
+        <br />
+      </dd>
+
+      <dt class="proc-spec">
+        <a name="reverse-vector-to-list">
+          (reverse-vector-&gt;list <i>vec</i>
+                                   [<i>start</i> [<i>end</i>]])
+          -&gt; proper-list
+        </a>
+      </dt>
+      <dd>
+        <tt><i>vec</i></tt>.
+        Like <tt><a href="#vector-to-list">vector-&gt;list</a></tt>,
+        but the resulting list contains the elements in reverse of
+        <tt><i>vector</i></tt>.
         <br />
         <br />
       </dd>
@@ -2011,16 +1970,22 @@ zot</pre>
       <a name="SampImpl">6. Sample Implementation</a>
     </h1>
     <p>
-      The sample implementation is (not yet) in the repository of this SRFI.
-      It is licensed under a very open copyright with which no implementors
-      should have any legal issues.
-      <br />
-      <br />
-      The reference implementation has only one non-R5RS dependency:
-      <a href="#SRFI-23">SRFI 23</a>'s <tt>error</tt> procedure.
-      <br />
-      <br />
+      The sample implementation is in the repository of this SRFI.
+      It has only one non-R5RS dependency:
+      <a href="#SRFI-23">SRFI 23</a>'s <tt>error</tt> procedure,
+      which is also provided by R7RS-small.
+      It is in the public domain, or alternatively under the same copyright
+      as this SRFI.  The following files are provided:
     </p>
+    <ul><li><code>vectors-impl.scm</code> -
+    a modified version of the implementation of SRFI 43</li>
+    <li><code>vectors.scm</code> -
+    a Chicken library showing what to export for an R5RS implementation</li>
+    <li><code>vectors.sld</code> -
+    an R7RS library that excludes what R7RS-small already provides</li>
+    <li><code>vectors-test.scm</code> -
+    tests using the Chicken test egg (also available on Chibi)</li>
+    </ul>
 
     <h1 class="nonheader">
       <a name="Acknowledgements">7. Acknowledgements</a>
