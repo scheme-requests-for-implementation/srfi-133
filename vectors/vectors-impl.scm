@@ -894,7 +894,7 @@
 
 ;;; (VECTOR-COUNT <predicate?> <vector> ...)
 ;;;       -> exact, nonnegative integer
-;;;     (PREDICATE? <index> <value> ...) ; N vectors -> N+1 args
+;;;     (PREDICATE? <value> ...) ; N vectors -> N args
 ;;;   PREDICATE? is applied element-wise to the elements of VECTOR ...,
 ;;;   and a count is tallied of the number of elements for which a
 ;;;   true value is produced by PREDICATE?.  This count is returned.
