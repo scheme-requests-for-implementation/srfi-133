@@ -24,7 +24,7 @@ extension.
 
 Additionally, the `tests/` directory has been added to accommodate the CHICKEN
 package manager (for running tests). Currently it provides a default test
-runner which merely includes the tests found in the `ilists/` directory.
+runner which merely includes the tests found in the `vectors/` directory.
 
 ## License
 
