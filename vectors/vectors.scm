@@ -1,4 +1,4 @@
-(module vectors ()
+(module srfi-133 ()
   (import (except scheme vector-fill! vector->list list->vector))
   (import (only chicken include error use))
   ;; Constructors
