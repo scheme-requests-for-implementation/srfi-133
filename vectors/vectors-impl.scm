@@ -48,8 +48,6 @@
 ;;; list->vector                    reverse-list->vector
 ;;; vector->string                  string->vector
 
-
-
 ;;; --------------------
 ;;; Commentary on efficiency of the code
 
@@ -716,7 +714,7 @@
 ;;;   with the situation that ELEMENT=? is EQ? to avoid more unnecessary
 ;;;   comparisons, but I believe this optimization is probably fairly
 ;;;   insignificant.)
-;;;   
+;;;
 ;;;   If the number of vector arguments is zero or one, then #T is
 ;;;   automatically returned.  If there are N vector arguments,
 ;;;   VECTOR_1 VECTOR_2 ... VECTOR_N, then VECTOR_1 & VECTOR_2 are

@@ -1,0 +1,3 @@
+(uri meta-file
+     "https://raw.githubusercontent.com/scheme-requests-for-implementation/{egg-name}/CHICKEN-{egg-release}/{egg-name}.meta")
+(release "1.0")

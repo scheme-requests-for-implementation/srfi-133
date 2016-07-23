@@ -1,5 +1,5 @@
 (cond-expand
-  (chicken (use test vectors))
+  (chicken (use test srfi-133))
   (chibi (import (scheme base) (chibi test) (vectors))))
 (test-group "vectors"
   (test-group "vectors/basics"

@@ -1,0 +1,22 @@
+;; -*- Hen -*-
+
+((egg "srfi-133.egg")
+ ; List of files that should be bundled alongside egg
+ (files "vectors/vectors.scm"
+        "vectors/vectors-impl.scm"
+        "vectors/vectors-test.scm"
+        "tests/run.scm"
+        "srfi-133.setup"
+        "srfi-133.meta"
+        "srfi-133.release-info"
+        "LICENSE"
+        "README.md")
+
+ (license "BSD")
+ (category data)
+ (test-depends test)
+ (author "John Cowan, Taylor Campbell, Will Clinger")
+ (maintainer "Jeremy Steward")
+ (synopsis "SRFI-133: Vector Library (R7RS-compatible)")
+ (email "cowan@ccil.org")
+ (repo "https://github.com/scheme-requests-for-implementation/srfi-133"))
