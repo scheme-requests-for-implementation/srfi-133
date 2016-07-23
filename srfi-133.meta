@@ -1,6 +1,6 @@
 ;; -*- Hen -*-
 
-((egg "srfi-128.egg")
+((egg "srfi-133.egg")
  ; List of files that should be bundled alongside egg
  (files "vectors/vectors.scm"
         "vectors/vectors-impl.scm"
