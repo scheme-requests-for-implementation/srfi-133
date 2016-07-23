@@ -18,5 +18,5 @@
   ;; Conversion
   (export vector->list reverse-vector->list list->vector reverse-list->vector
           vector->string string->vector)
-  (include "vectors-impl.scm")
+  (include "vectors/vectors-impl.scm")
 )
