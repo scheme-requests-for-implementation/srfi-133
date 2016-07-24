@@ -15,12 +15,10 @@ Thank you.
 
 [[mailto:srfi-editors@srfi.schemers.org][The SRFI Editors]]
 
-* SRFI 133 - Vector Library (R7RS-compatible)
+* Implementation
 
-This repository hosts a reference implementation of SRFI 133 - Vector
-Library (R7RS-compatible).  The full documentation for this SRFI can
-be found on the [[http://srfi.schemers.org/srfi-133/][SRFI Document Reference]].  The repository hosts a
-complete implementation of the SRFI, running on [[http://call-cc.org][CHICKEN]] Scheme.
+The repository hosts a complete implementation of the SRFI, running on
+[[http://call-cc.org][CHICKEN]] Scheme.
 
 ** File Description
 
