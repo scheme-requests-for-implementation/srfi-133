@@ -691,7 +691,7 @@ None at this time.
         <tt><i>end</i></tt>.  <tt><i>start</i></tt> defaults to
         <tt>0</tt> and <tt><i>end</i></tt> defaults to the value of
         <tt>(<a href="#vector-length">vector-length</a>
-        <i>vec</i>)</tt>.  
+        <i>vec</i>)</tt>.
         SRFI 43 provides an optional <var>fill</var> argument to supply
         values if <var>end</var> is greater than the length of <var>vec</var>.
         Neither R7RS-small nor this SRFI requires support for this argument.
@@ -1383,7 +1383,7 @@ None at this time.
       </dt>
       <dd>
         [<a href="#R7RS-small"><i>R7RS-small</i></a>]
-        Simple vector iterator: applies <tt><i>f</i></tt> to 
+        Simple vector iterator: applies <tt><i>f</i></tt> to
         the corresponding list of parallel elements
         from <tt><i>vec<sub>1</sub> vec<sub>2</sub></i>
         ...</tt>
@@ -1416,7 +1416,7 @@ foo
 bar
 baz
 quux
-zot</pre>        
+zot</pre>
       </dd>
     </dl>
     <dl>
@@ -1440,7 +1440,7 @@ zot</pre>
         <br />
         <br />
         <code class="example-call">
-          (vector-count (&lambda; even?
+          (vector-count even?
                         '#(3 1 4 1 5 9 2 5 6))
         </code>
         <br />
@@ -1450,7 +1450,7 @@ zot</pre>
         <br />
         <br />
         <code class="example-call">
-          (vector-count (&lambda; &lt;
+          (vector-count &lt;
                         '#(1 3 6 9) '#(2 4 6 8 10 12))
         </code>
         <br />
@@ -1474,7 +1474,7 @@ zot</pre>
         Each element <i>i</i> of <i>new</i> is set to the result of invoking
         <tt><i>f</i></tt> on <i><tt>new</tt><sub>i-1</sub></i>
         and <i><tt>vec</tt><sub>i</sub></i>,
-        except that for the first call on <i>f</i>, the first argument is 
+        except that for the first call on <i>f</i>, the first argument is
         <i>knil</i>.  The <i>new</i> vector is returned.
         <br />
         <br />
@@ -1736,7 +1736,7 @@ zot</pre>
         satisfy <tt><i>pred?</i></tt> in their original order followed
         by all the elements that do not satisfy <tt><i>pred</i></tt>,
         also in their original order.
-        
+
         <br />
         <br />
         Two values are returned, the newly allocated vector and the index
@@ -1905,7 +1905,6 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        <tt><i>vec</i></tt>.
         Like <tt><a href="#vector-to-list">vector-&gt;list</a></tt>,
         but the resulting list contains the elements in reverse of
         <tt><i>vector</i></tt>.
@@ -1947,7 +1946,7 @@ zot</pre>
         [<a href="#R7RS-small"><i>R7RS-small</i></a>] Creates a vector containing the elements in <tt><i>string</i></tt>
         between <tt><i>start</i></tt>, which defaults to <tt>0</tt>,
         and <tt><i>end</i></tt>, which defaults to the length of
-        <tt><i>string</i></tt>.  
+        <tt><i>string</i></tt>.
         <br />
         <br />
       </dd>
