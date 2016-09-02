@@ -917,13 +917,13 @@
                                           vector-count)
                         (cons vec vectors)))))
 
-;;; (VECTOR-CUMULATE <f> <vector> <knil>)
+;;; (VECTOR-CUMULATE <f> <knil> <vector>)
 ;;;       -> vector
 ;;;   Returns a <new>ly allocated vector <new> with the same length as
 ;;;   <vec>. Each element <i> of <new> is set to the result of invoking <f> on
 ;;;   <new>[i-1] and <vec>[i], except that for the first call on <f>, the first
 ;;;   argument is <knil>. The <new> vector is returned.
-(define (vector-cumulate f vec knil)
+(define (vector-cumulate f knil vec)
   (let* ((len (vector-length vec))
          (result (make-vector len)))
     (let loop ((i 0) (left knil))
