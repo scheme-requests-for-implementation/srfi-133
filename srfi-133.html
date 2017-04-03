@@ -98,7 +98,10 @@ None at this time.
       <ul>
 	<li>2016/4/1 (Fixed description of <code>vector-unfold!</code>)</li>
 	<li>2016/8/10 (Fixed typos.)</li>
-	<li>2016/9/2 (Reversed order of arguments to <code>vector-cumulate</code>.)</li></ul></ul> 
+	<li>2016/9/2 (Changed order of arguments to <code>vector-cumulate</code>
+	  from <code>(vector-cumulate f vec knil)</code> to
+          <code>(vector-cumulate f knil vec)</code> to match the
+          argument order of vector-fold.)</li></ul></ul>
     <h1 class="nonheader"><a name="Abstract">2. Abstract</a></h1>
     <p>
       This <a href="#SRFI">SRFI</a> proposes a comprehensive
