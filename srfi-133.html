@@ -102,7 +102,23 @@ None at this time.
 	  from <code>(vector-cumulate f vec knil)</code> to
           <code>(vector-cumulate f knil vec)</code> to match the
           argument order of vector-fold.)</li>
-	<li>2017/6/5 (Added second return type of <code>vector-partition</code>.)</li></ul></ul>
+	<li>2017/6/5 (Added second return type of <code>vector-partition</code>.)</li>
+	<li>2018/7/4 (Removed requirement that <code>elt=?</code>
+	  argument be consistent with <code>eq?</code>.)</li></ul></ul>
+
+    <p><b>Post-finalization note</b>: The finalized version of this
+      SRFI required the equality operator used by the
+      <code>vector=</code> procedure to be consistent with
+      <code>eq?</code>.  However, <code>=</code> is not consistent
+      with <code>eq?</code> in a Scheme which provides NaN values and
+      IEEE semantics for them, as <code>(eq? +nan.0 +nan.0)</code> may
+      return either <code>#t</code> or <code>#f</code> but <code>(=
+      +nan.0 +nan.0)</code> must return <code>#f. </code> This means
+      that the expected semantics of <code>=</code> when used with
+      <code>vector=</code> are violated.  Therefore, the requirement
+      for consistency has been removed from this version, and the
+      sample implementation adjusted accordingly.</p>
+
     <h1 class="nonheader"><a name="Abstract">2. Abstract</a></h1>
     <p>
       This <a href="#SRFI">SRFI</a> proposes a comprehensive
@@ -1001,14 +1017,6 @@ None at this time.
         <tt><i>E</i><sub>b</sub></tt>, <tt>(<i>elt=? E</i><sub>a</sub>
         <i>E</i><sub>b</sub>)</tt> returns a true value.
         <tt><i>Elt=?</i></tt> is always applied to two arguments.
-        Element comparison must be consistent with <tt>eq</tt>; that
-        is, if <tt>(eq? <i>E</i><sub>a</sub> <i>E</i><sub>b</sub>)</tt>
-        results in a true value, then <tt>(<i>elt=? E</i><sub>a</sub>
-        <i>E</i><sub>b</sub>)</tt> must also result in a true value.
-        This may be exploited to avoid unnecessary element comparisons.
-        (The reference implementation does, but it does not consider
-        the situation where <tt><i>elt=?</i></tt> is in fact itself
-        <tt>eq?</tt> to avoid yet more unnecessary comparisons.)
         <br />
         <br />
         If there are only zero or one vector arguments, <tt>#t</tt> is
