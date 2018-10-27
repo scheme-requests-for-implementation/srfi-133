@@ -101,7 +101,7 @@ None at this time.
 	<li>2016/9/2 (Changed order of arguments to <code>vector-cumulate</code>
 	  from <code>(vector-cumulate f vec knil)</code> to
           <code>(vector-cumulate f knil vec)</code> to match the
-          argument order of vector-fold.)</li>
+          argument order of <tt>vector-fold</tt>.)</li>
 	<li>2017/6/5 (Added second return type of <code>vector-partition</code>.)</li>
 	<li>2018/7/4 (Removed requirement that <code>elt=?</code>
 	  argument be consistent with <code>eq?</code>.)</li></ul></ul>
@@ -1751,13 +1751,13 @@ zot</pre>
         A vector the same size as <tt><i>vec</i></tt> is newly allocated
         and filled with all the elements of <tt><i>vec</tt></i> that
         satisfy <tt><i>pred?</i></tt> in their original order followed
-        by all the elements that do not satisfy <tt><i>pred</i></tt>,
+        by all the elements that do not satisfy <tt><i>pred?</i></tt>,
         also in their original order.
 
         <br />
         <br />
         Two values are returned, the newly allocated vector and the index
-        of the leftmost element that does not satisfy <tt><i>pred</i></tt>.
+        of the leftmost element that does not satisfy <tt><i>pred?</i></tt>.
         <br />
         <br />
       </dd>
@@ -1856,13 +1856,6 @@ zot</pre>
       <dd>
         Like <tt><a href="#vector-copy-bang">vector-copy!</a></tt>, but
         the elements appear in <tt><i>to</i></tt> in reverse order.
-        <tt>
-          (<a href="#vector-reverse-bang">vector-reverse!</a>
-           <i>target</i>
-           <i>tstart</i>
-           <i>send</i>)
-        </tt>
-        would.
         <br />
         <br />
       </dd>
@@ -1924,7 +1917,7 @@ zot</pre>
       <dd>
         Like <tt><a href="#vector-to-list">vector-&gt;list</a></tt>,
         but the resulting list contains the elements in reverse of
-        <tt><i>vector</i></tt>.
+        <tt><i>vec</i></tt>.
         <br />
         <br />
       </dd>
