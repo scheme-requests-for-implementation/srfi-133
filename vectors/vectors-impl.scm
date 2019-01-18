@@ -705,8 +705,8 @@
 ;;;     (ELT=? <value> <value>) -> boolean
 ;;;   Determine vector equality generalized across element comparators.
 ;;;   Vectors A and B are equal iff their lengths are the same and for
-;;;   each respective elements E_a and E_b (element=? E_a E_b) returns
-;;;   a true value.  ELT=? is always applied to two arguments.
+;;;   each respective elements E_a and E_b (elt=? E_a E_b) returns a
+;;;   true value.  ELT=? is always applied to two arguments.
 ;;;
 ;;;   If the number of vector arguments is zero or one, then #T is
 ;;;   automatically returned.  If there are N vector arguments,
