@@ -6,7 +6,7 @@ This repository hosts [[https://srfi.schemers.org/srfi-133/][SRFI 133]]: Vector 
 
 This SRFI is in /final/ status.
 
-See also [[https://srfi.schemers.org/srfi-43/][SRFI 43: Vector library]].
+See also [[https://srfi.schemers.org/srfi-43/][SRFI 43: Vector library]] and [[https://srfi.schemers.org/srfi-160/][SRFI 160: Homogeneous numeric vector libraries]].
 
 The full documentation for this SRFI can be found in the [[https://srfi.schemers.org/srfi-133/srfi-133.html][SRFI Document]].
 
