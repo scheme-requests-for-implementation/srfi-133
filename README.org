@@ -6,6 +6,8 @@ Based on SRFI 43 by Taylor Campbell.
 
 
 
+keywords: [[https://srfi.schemers.org/?keywords=data-structure][Data Structure]]
+
 This repository hosts [[https://srfi.schemers.org/srfi-133/][SRFI 133]]: Vector Library (R7RS-compatible), a [[https://srfi.schemers.org/][Scheme Request for Implementation]].
 
 This SRFI is in /final/ status.
