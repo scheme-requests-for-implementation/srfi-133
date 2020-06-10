@@ -12,10 +12,6 @@
 
 
 
-      dt.ref {
-        font-weight: </i>;
-       }
-
       dt.ref:before {
         content: "[";
       }
@@ -25,7 +21,6 @@
 
       dt.proc-index {
         font-size: medium;
-        font-weight: </i>;
       }
 
       dt.type-spec {
@@ -180,7 +175,7 @@ None at this time.
      procedures as well as <tt>vector-map!</tt>, <tt>vector-fold</tt>,
      <tt>vector-fold-right</tt>, and <tt>vector-count</tt> to leave
      out the <var>index</var> argument that is passed under SRFI 43's
-     definition.<p>
+     definition.</p>
      <p>In addition, the version of <code>vector-copy</code> in this SRFI
      does not require support for a <var>fill</var> argument, which
      makes it equivalent to the R7RS-small definition.</p>
@@ -322,17 +317,17 @@ None at this time.
       </dt>
       <dd>
         <code>
-          <i><a href="#vector-set-bang">vector-set!</a></i>
+          <a href="#vector-set-bang">vector-set!</a>
           <a href="#vector-swap-bang">vector-swap!</a>
           <br />
-          <i><a href="#vector-fill-bang">vector-fill!</a></i>
+          <a href="#vector-fill-bang">vector-fill!</a>
           <a href="#vector-reverse-bang">vector-reverse!</a>
           <br />
-          <i><a href="#vector-copy-bang">vector-copy!</a></i>
+          <a href="#vector-copy-bang">vector-copy!</a>
           <a href="#vector-reverse-copy-bang">vector-reverse-copy!</a>
           <br />
-          <a href="#vector-unfold-bang">vector-unfold!</a></i>
-          <a href="#vector-unfold-right-bang">vector-unfold-right!</a></i>
+          <a href="#vector-unfold-bang">vector-unfold!</a>
+          <a href="#vector-unfold-right-bang">vector-unfold-right!</a>
           <br />
           <br />
         </code>
@@ -859,7 +854,6 @@ None at this time.
         <br />
         <br />
       </dd>
-    </dl>
       <dt class="proc-spec">
         <a name="vector-append-subvectors">
           (vector-append-subvectors [<i>vec start end] ...</i>)
@@ -885,6 +879,7 @@ None at this time.
         <br />
         <br />
       </dd>
+    </dl>
 
 
     <h2><a name="Predicates">5.2. Predicates</a></h2>
@@ -1659,7 +1654,7 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        Similar to <tt><a href="#vector-index">vector-index</a></tt>
+        <p>Similar to <tt><a href="#vector-index">vector-index</a></tt>
         and
         <tt><a href="#vector-index-right">vector-index-right</a></tt>,
         but instead of searching left to right or right to left, this
@@ -1750,7 +1745,7 @@ zot</pre>
       </dt>
       <dd>
         A vector the same size as <tt><i>vec</i></tt> is newly allocated
-        and filled with all the elements of <tt><i>vec</tt></i> that
+        and filled with all the elements of <tt><i>vec</i></tt> that
         satisfy <tt><i>pred?</i></tt> in their original order followed
         by all the elements that do not satisfy <tt><i>pred?</i></tt>,
         also in their original order.
@@ -1831,7 +1826,6 @@ zot</pre>
           -&gt; unspecified
         </a>
       </dt>
-    </dl>
       <dd>
         [<a href="#R7RS-small"><i>R7RS-small</i></a>]
         Copies the elements of vector <tt><i>from</i></tt>
@@ -1862,7 +1856,7 @@ zot</pre>
       </dd>
       <dt class="proc-spec">
         <a name="vector-unfold-bang">
-          (vector-unfold! f vec start end initial-seed ...</i>)
+          (vector-unfold! <i>f vec start end initial-seed ...</i>)
           -&gt; unspecified
         </a>
       </dt>
@@ -1876,7 +1870,7 @@ zot</pre>
       </dd>
       <dt class="proc-spec">
         <a name="vector-unfold-right-bang">
-          (vector-unfold-right! f vec start end initial-seed ...</i>)
+          (vector-unfold-right! <i>f vec start end initial-seed ...</i>)
           -&gt; unspecified
         </a>
       </dt>
