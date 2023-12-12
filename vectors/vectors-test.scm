@@ -1,6 +1,11 @@
 (cond-expand
   (chicken (use test srfi-133))
-  (chibi (import (scheme base) (chibi test) (vectors))))
+  (chibi (import (scheme base) (chibi test) (vectors)))
+  (guile (import (scheme base))
+         (import (rename (srfi srfi-64) (test-equal test)))
+         (import (srfi srfi-133))
+         (define (test-exit) (test-end "srfi-133"))
+         (test-begin "srfi-133")))
 (test-group "vectors"
   (test-group "vectors/basics"
     (define v (make-vector 3 3))
