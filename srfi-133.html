@@ -100,7 +100,14 @@ None at this time.
 	<li>2017-06-05 (Added second return type of <code>vector-partition</code>.)</li>
 	<li>2018-07-04 (Removed requirement that <code>elt=?</code>
 	  argument be consistent with <code>eq?</code>.)</li>
-	<li>2018-10-27 (Fixed typos.)</li></ul></ul>
+	<li>2018-10-27 (Fixed typos.)</li>
+        <li>2024-01-26 (Fixed <a href="#end">definition
+            of <em>end</em> notation</a>.  Added missing constraint on
+            length of first argument
+            of <a href="#vector-map-bang"><code>vector-map!</code></a>.
+            Clarified the second return value
+          of <a href="#vector-partition"><code>vector-partition</code></a>
+            in the case that all elements satisfy <em>pred?</em>.)</ul></ul>
 
     <p><b>Post-finalization note</b>: The finalized version of this
       SRFI required the equality operator used by the
@@ -386,7 +393,7 @@ None at this time.
 
       <dt class="type-spec">i, j, start, size</dt>
       <dd>
-        The argument in this place must be a exact nonnegative integer, i.e.
+        The argument in this place must be an exact nonnegative integer, i.e.
         it must satisfy the predicates <tt>exact?</tt>, <tt>integer?</tt> and either
         <tt>zero?</tt> or <tt>positive?</tt>.  The third case of it
         indicates the index at which traversal begins; the fourth case
@@ -395,11 +402,11 @@ None at this time.
         <br />
       </dd>
 
-      <dt class="type-spec">end</dt>
+      <dt class="type-spec" id="end">end</dt>
       <dd>
-        The argument in this place must be a exact positive integer, i.e. it
+        The argument in this place must be an exact nonnegative integer, i.e. it
         must satisfy the predicates <tt>exact?</tt>, <tt>integer?</tt> and
-        <tt>positive?</tt>.  This indicates the index directly before
+        either <tt>positive?</tt> or <tt>zero?</tt>.  This indicates the index directly before
         which traversal will stop &mdash; processing will occur until
         the the index of the vector is <tt><i>end</i></tt>.  It is the
         closed right side of a range.
@@ -1381,7 +1388,9 @@ None at this time.
         dangerous for <tt><i>f</i></tt> to apply either
         <tt><a href="#vector-ref">vector-ref</a></tt> or
         <tt><a href="#vector-set-bang">vector-set!</a></tt> to
-        <tt><i>vec<sub>1</sub></i></tt> in <tt><i>f</i></tt>.
+        <tt><i>vec<sub>1</sub></i></tt> in <tt><i>f</i></tt>.  It is
+        an error if <tt><i>vec<sub>1</sub></i></tt> contains more
+        elements than any other <tt><i>vec</i></tt>.
         <br />
       </dd>
     </dl>
@@ -1752,8 +1761,8 @@ zot</pre>
 
         <br />
         <br />
-        Two values are returned, the newly allocated vector and the index
-        of the leftmost element that does not satisfy <tt><i>pred?</i></tt>.
+        Two values are returned, the newly allocated vector and the number
+        of elements satisfy <tt><i>pred?</i></tt>.
         <br />
         <br />
       </dd>
