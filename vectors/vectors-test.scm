@@ -5,7 +5,12 @@
                 (rename (srfi srfi-64) (test-equal test))
                 (srfi srfi-133))
         (define (test-exit) (test-end "srfi-133"))
-        (test-begin "srfi-133")))
+        (test-begin "srfi-133"))
+ (gambit (import (srfi 64)
+                 (rename (srfi 64) (test-equal test)))
+         (include "../vectors/vectors-impl.scm")
+         (define (test-exit) (test-end "srfi-133"))
+         (test-begin "srfi-133")))
 (test-group "vectors"
   (test-group "vectors/basics"
     (define v (make-vector 3 3))

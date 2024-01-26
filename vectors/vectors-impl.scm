@@ -118,6 +118,7 @@
 
 (define (nonneg-int? x)
   (and (integer? x)
+       (exact? x)
        (not (negative? x))))
 
 (define (between? x y z)
@@ -179,8 +180,10 @@
 ;;;   CALLEE.  Return INDEX when it is valid.  (Note that this does NOT
 ;;;   check that VECTOR is indeed a vector.)
 (define (check-index vec index callee)
-  (let ((index (check-type integer? index callee)))
+  (let ((index (check-type nonneg-int? index callee)))
     (cond ((< index 0)
+           ;; this branch can't happen after changing the preceding
+           ;; check-type to check nonneg-int? instead of integer?
            (check-index vec
                         (error "vector index too low"
                                index
@@ -214,8 +217,8 @@
                                `(,start-name was ,start)
                                `(,end-name was ,end)
                                `(while calling ,callee)))))
-        (start (check-type integer? start callee))
-        (end   (check-type integer? end   callee)))
+        (start (check-type nonneg-int? start callee))
+        (end   (check-type nonneg-int? end   callee)))
     (cond ((> start end)
            ;; I'm not sure how well this will work.  The intent is that
            ;; the programmer tells the debugger to proceed with both a
@@ -1024,7 +1027,7 @@
           (if (or (= start end) (and j (= i j)))
               #f
               (let ((comparison
-                     (check-type integer?
+                     (check-type integer?   ;; not necessarily nonnegative
                                  (cmp (vector-ref vec i) value)
                                  `(,cmp for ,vector-binary-search))))
                 (cond ((zero?     comparison) i)
