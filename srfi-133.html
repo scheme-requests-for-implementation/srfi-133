@@ -1,5 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
   <head>
     <!-- Non-indentation necessary for the commit check junk. -->
@@ -96,7 +95,7 @@ None at this time.
 	<li>2016-09-02 (Changed order of arguments to <code>vector-cumulate</code>
 	  from <code>(vector-cumulate f vec knil)</code> to
           <code>(vector-cumulate f knil vec)</code> to match the
-          argument order of <tt>vector-fold</tt>.)</li>
+          argument order of <code>vector-fold</code>.)</li>
 	<li>2017-06-05 (Added second return type of <code>vector-partition</code>.)</li>
 	<li>2018-07-04 (Removed requirement that <code>elt=?</code>
 	  argument be consistent with <code>eq?</code>.)</li>
@@ -145,15 +144,15 @@ None at this time.
     </p>
 
     <ul class="indented">
-      <li><tt><a href="#vector-p">vector?</a></tt></li>
-      <li><tt><a href="#make-vector">make-vector</a></tt></li>
-      <li><tt><a href="#vector">vector</a></tt></li>
-      <li><tt><a href="#vector-length">vector-length</a></tt></li>
-      <li><tt><a href="#vector-ref">vector-ref</a></tt></li>
-      <li><tt><a href="#vector-set-bang">vector-set!</a></tt></li>
-      <li><tt><a href="#vector-to-list">vector-&gt;list</a></tt></li>
-      <li><tt><a href="#list-to-vector">list-&gt;vector</a></tt></li>
-      <li><tt><a href="#vector-fill-bang">vector-fill!</a></tt></li>
+      <li><code><a href="#vector-p">vector?</a></code></li>
+      <li><code><a href="#make-vector">make-vector</a></code></li>
+      <li><code><a href="#vector">vector</a></code></li>
+      <li><code><a href="#vector-length">vector-length</a></code></li>
+      <li><code><a href="#vector-ref">vector-ref</a></code></li>
+      <li><code><a href="#vector-set-bang">vector-set!</a></code></li>
+      <li><code><a href="#vector-to-list">vector-&gt;list</a></code></li>
+      <li><code><a href="#list-to-vector">list-&gt;vector</a></code></li>
+      <li><code><a href="#vector-fill-bang">vector-fill!</a></code></li>
     </ul>
     <p>
       <a href="#R7RS-small">R7RS-small</a> added support for
@@ -164,23 +163,23 @@ None at this time.
     </p>
 
     <ul class="indented">
-      <li><tt><a href="#vector-copy">vector-copy</a></tt></li>
-      <li><tt><a href="#vector-copy-bang">vector-copy!</a></tt></li>
-      <li><tt><a href="#vector-append">vector-append</a></tt></li>
-      <li><tt><a href="#vector-map">vector-map</a></tt></li>
-      <li><tt><a href="#vector-for-each">vector-for-each</a></tt></li>
-      <li><tt><a href="#vector-to-string">vector-&gt;string</a></tt></li>
-      <li><tt><a href="#string-to-vector">string-&gt;vector</a></tt></li>
+      <li><code><a href="#vector-copy">vector-copy</a></code></li>
+      <li><code><a href="#vector-copy-bang">vector-copy!</a></code></li>
+      <li><code><a href="#vector-append">vector-append</a></code></li>
+      <li><code><a href="#vector-map">vector-map</a></code></li>
+      <li><code><a href="#vector-for-each">vector-for-each</a></code></li>
+      <li><code><a href="#vector-to-string">vector-&gt;string</a></code></li>
+      <li><code><a href="#string-to-vector">string-&gt;vector</a></code></li>
     </ul>
 
     <p>
      <a href="#SRFI-43">SRFI 43</a> standardized more vector procedures,
      all of which are included in this SRFI.  Unfortunately, R7RS-small
      and SRFI 43 placed irreconcileable requirements on the procedures
-     invoked by <tt>vector-map</tt> and <tt>vector-for-each</tt>.
+     invoked by <code>vector-map</code> and <code>vector-for-each</code>.
      This SRFI resolves that issue by changing these SRFI 43
-     procedures as well as <tt>vector-map!</tt>, <tt>vector-fold</tt>,
-     <tt>vector-fold-right</tt>, and <tt>vector-count</tt> to leave
+     procedures as well as <code>vector-map!</code>, <code>vector-fold</code>,
+     <code>vector-fold-right</code>, and <code>vector-count</code> to leave
      out the <var>index</var> argument that is passed under SRFI 43's
      definition.</p>
      <p>In addition, the version of <code>vector-copy</code> in this SRFI
@@ -192,11 +191,11 @@ None at this time.
     </p>
 
     <ul class="indented">
-      <li><tt><a href="#vector-unfold-bang">vector-unfold!</a></tt></li>
-      <li><tt><a href="#vector-unfold-right-bang">vector-unfold-right!</a></tt></li>
-      <li><tt><a href="#vector-append-subvectors">vector-append-subvectors</a></tt></li>
-      <li><tt><a href="#vector-cumulate">vector-cumulate</a></tt></li>
-      <li><tt><a href="#vector-partition">vector-partition</a></tt></li>
+      <li><code><a href="#vector-unfold-bang">vector-unfold!</a></code></li>
+      <li><code><a href="#vector-unfold-right-bang">vector-unfold-right!</a></code></li>
+      <li><code><a href="#vector-append-subvectors">vector-append-subvectors</a></code></li>
+      <li><code><a href="#vector-cumulate">vector-cumulate</a></code></li>
+      <li><code><a href="#vector-partition">vector-partition</a></code></li>
     </ul>
 
 
@@ -370,11 +369,11 @@ None at this time.
         (f arg<sub>1</sub> arg<sub>2</sub> ...)
         -&gt; something</dt>
       <dd>
-        Indicates a function <tt><i>f</i></tt> takes the parameters
-        <tt><i>arg<sub>1</sub> arg<sub>2</sub>
-        ...</i></tt> and returns a value of the
-        type <tt><i>something</i></tt>.  If <tt><i>something</i></tt>
-        is <tt>unspecified</tt>, then <tt><i>f</i></tt> returns a single
+        Indicates a function <code><i>f</i></code> takes the parameters
+        <code><i>arg<sub>1</sub> arg<sub>2</sub>
+        ...</i></code> and returns a value of the
+        type <code><i>something</i></code>.  If <code><i>something</i></code>
+        is <code>unspecified</code>, then <code><i>f</i></code> returns a single
         implementation-dependent value; this SRFI does not specify what it
         returns, and in order to write portable code, the return value
         should be ignored.
@@ -386,7 +385,7 @@ None at this time.
       <dd>
         The argument in this place must be a vector, i.e. it must
         satisfy the predicate
-        <tt><a href="#vector-p">vector?</a></tt>.
+        <code><a href="#vector-p">vector?</a></code>.
         <br />
         <br />
       </dd>
@@ -394,8 +393,8 @@ None at this time.
       <dt class="type-spec">i, j, start, size</dt>
       <dd>
         The argument in this place must be an exact nonnegative integer, i.e.
-        it must satisfy the predicates <tt>exact?</tt>, <tt>integer?</tt> and either
-        <tt>zero?</tt> or <tt>positive?</tt>.  The third case of it
+        it must satisfy the predicates <code>exact?</code>, <code>integer?</code> and either
+        <code>zero?</code> or <code>positive?</code>.  The third case of it
         indicates the index at which traversal begins; the fourth case
         of it indicates the size of a vector.
         <br />
@@ -405,10 +404,10 @@ None at this time.
       <dt class="type-spec" id="end">end</dt>
       <dd>
         The argument in this place must be an exact nonnegative integer, i.e. it
-        must satisfy the predicates <tt>exact?</tt>, <tt>integer?</tt> and
-        either <tt>positive?</tt> or <tt>zero?</tt>.  This indicates the index directly before
+        must satisfy the predicates <code>exact?</code>, <code>integer?</code> and
+        either <code>positive?</code> or <code>zero?</code>.  This indicates the index directly before
         which traversal will stop &mdash; processing will occur until
-        the the index of the vector is <tt><i>end</i></tt>.  It is the
+        the the index of the vector is <code><i>end</i></code>.  It is the
         closed right side of a range.
         <br />
         <br />
@@ -442,9 +441,9 @@ None at this time.
 
       <dt class="type-spec">[something]</dt>
       <dd>
-        Indicates that <tt><i>something</i></tt> is an optional
+        Indicates that <code><i>something</i></code> is an optional
         argument; it needn't necessarily be applied.
-        <tt><i>Something</i></tt> needn't necessarily be one thing; for
+        <code><i>Something</i></code> needn't necessarily be one thing; for
         example, this usage of it is perfectly valid:
         <br />
         <br />
@@ -460,7 +459,7 @@ None at this time.
 
       <dt class="type-spec">something ...</dt>
       <dd>
-        Indicates that zero or more <tt><i>something</i></tt>s are
+        Indicates that zero or more <code><i>something</i></code>s are
         allowed to be arguments.
         <br />
         <br />
@@ -471,7 +470,7 @@ None at this time.
         ...
       </dt>
       <dd>
-        Indicates that at least one <tt><i>something</i></tt> must be
+        Indicates that at least one <code><i>something</i></code> must be
         arguments.
         <br />
         <br />
@@ -484,7 +483,7 @@ None at this time.
       </dt>
       <dd>
         Exactly equivalent to the previous argument notation, but this
-        also indicates that <tt><i>n</i></tt> will be used later in the
+        also indicates that <code><i>n</i></code> will be used later in the
         procedure description.
         <br />
         <br />
@@ -495,8 +494,8 @@ None at this time.
       It should be noted that all of the procedures that iterate across
       multiple vectors in parallel stop iterating and produce the final
       result when the end of the shortest vector is reached.  The sole
-      exception is <tt><a href="#vector-eq">vector=</a></tt>, which
-      automatically returns <tt>#f</tt> if the vectors' lengths vary.
+      exception is <code><a href="#vector-eq">vector=</a></code>, which
+      automatically returns <code>#f</code> if the vectors' lengths vary.
     </p>
 
     <h2><a name="Constructors">5.1. Constructors</a></h2>
@@ -509,7 +508,7 @@ None at this time.
       </dt>
       <dd>
         [<a href="#R7RS-small"><i>R7RS-small</i></a>] Creates and returns a vector
-        of size <tt><i>size</i></tt>.
+        of size <code><i>size</i></code>.
         If <i>fill</i> is specified, all the elements of the vector
         are initialized to <i>fill</i>.  Otherwise, their contents
         are indeterminate.
@@ -537,7 +536,7 @@ None at this time.
       </dt>
       <dd>
         [<a href="#R7RS-small"><i>R7RS-small</i></a>] Creates and returns a vector
-        whose elements are <tt><i>x ...</i></tt>.
+        whose elements are <code><i>x ...</i></code>.
         <br />
         <br />
         Example:
@@ -563,13 +562,13 @@ None at this time.
       </dt>
       <dd>
         The fundamental vector constructor.  Creates a vector whose
-        length is <tt><i>length</i></tt> and iterates across each index
-        <tt><i>k</i></tt> between <tt>0</tt> and
-        <tt><i>length</i></tt>, applying <tt><i>f</i></tt> at each
+        length is <code><i>length</i></code> and iterates across each index
+        <code><i>k</i></code> between <code>0</code> and
+        <code><i>length</i></code>, applying <code><i>f</i></code> at each
         iteration to the current index and current seeds, in that
-        order, to receive <tt><i>n</i> + 1</tt> values: first, the
-        element to put in the <tt><i>k</i></tt>th slot of the new
-        vector and <tt><i>n</i></tt> new seeds for the next iteration.
+        order, to receive <code><i>n</i> + 1</code> values: first, the
+        element to put in the <code><i>k</i></code>th slot of the new
+        vector and <code><i>n</i></code> new seeds for the next iteration.
         It is an error for the number of seeds to vary between
         iterations.  Note that the termination condition is different from
         the <code>unfold</code> procedure of <a href="#SRFI-1">SRFI 1</a>.
@@ -591,10 +590,10 @@ None at this time.
         <br />
         <br />
         Construct a vector of the sequence of integers in the range
-        [0,<tt><i>n</i></tt>).
+        [0,<code><i>n</i></code>).
         <br />
         <code class="example-call">
-          (vector-unfold values <tt><i>n</i></tt>)
+          (vector-unfold values <code><i>n</i></code>)
         </code>
         <br />
         <code class="example-value">
@@ -602,7 +601,7 @@ None at this time.
         </code>
         <br />
         <br />
-        Copy <tt><i>vector</i></tt>.
+        Copy <code><i>vector</i></code>.
         <br />
         <br />
         <code class="example-call">
@@ -623,8 +622,8 @@ None at this time.
         </a>
       </dt>
       <dd>
-        Like <tt><a href="#vector-unfold">vector-unfold</a></tt>, but
-        it uses <tt><i>f</i></tt> to generate elements from
+        Like <code><a href="#vector-unfold">vector-unfold</a></code>, but
+        it uses <code><i>f</i></code> to generate elements from
         right-to-left, rather than left-to-right.
         The first index used is <i>length</i> - 1.
         Note that the termination condition is different from
@@ -647,7 +646,7 @@ None at this time.
         </code>
         <br />
         <br />
-        Reverse <tt><i>vector</i></tt>.
+        Reverse <code><i>vector</i></code>.
         <br />
         <br />
         <code class="example-call">
@@ -673,8 +672,8 @@ None at this time.
         </a>
       </dt>
       <dd>
-        Creates a new vector whose size is <tt><i>size</i></tt> and
-        fills it by applying <tt><i>f</i></tt> to each index in the
+        Creates a new vector whose size is <code><i>size</i></code> and
+        fills it by applying <code><i>f</i></code> to each index in the
         vector, in an unspecified order.
         <br />
         <br />
@@ -711,14 +710,14 @@ None at this time.
       </dt>
       <dd>
         [<a href="#R7RS-small"><i>R7RS-small</i></a>]
-        Allocates a new vector whose length is <tt><i>end</i> -
-        <i>start</i></tt> and fills it with elements from
-        <tt><i>vec</i></tt>, taking elements from <tt><i>vec</i></tt>
-        starting at index <tt><i>start</i></tt> and stopping at index
-        <tt><i>end</i></tt>.  <tt><i>Start</i></tt> defaults to
-        <tt>0</tt> and <tt><i>end</i></tt> defaults to the value of
-        <tt>(<a href="#vector-length">vector-length</a>
-        <i>vec</i>)</tt>.
+        Allocates a new vector whose length is <code><i>end</i> -
+        <i>start</i></code> and fills it with elements from
+        <code><i>vec</i></code>, taking elements from <code><i>vec</i></code>
+        starting at index <code><i>start</i></code> and stopping at index
+        <code><i>end</i></code>.  <code><i>Start</i></code> defaults to
+        <code>0</code> and <code><i>end</i></code> defaults to the value of
+        <code>(<a href="#vector-length">vector-length</a>
+        <i>vec</i>)</code>.
         SRFI 43 provides an optional <var>fill</var> argument to supply
         values if <var>end</var> is greater than the length of <var>vec</var>.
         Neither R7RS-small nor this SRFI requires support for this argument.
@@ -764,9 +763,9 @@ None at this time.
         </a>
       </dt>
       <dd>
-        Like <tt><a href="#vector-copy">vector-copy</a></tt>, but it
+        Like <code><a href="#vector-copy">vector-copy</a></code>, but it
         copies the elements in the reverse order from
-        <tt><i>vec</i></tt>.
+        <code><i>vec</i></code>.
         <br />
         <br />
         Example:
@@ -792,8 +791,8 @@ None at this time.
       <dd>
         [<a href="#R7RS-small"><i>R7RS-small</i></a>]
         Returns a newly allocated vector that contains all elements in
-        order from the subsequent locations in <tt><i>vec
-        ...</i></tt>.
+        order from the subsequent locations in <code><i>vec
+        ...</i></code>.
         <br />
         <br />
         Examples:
@@ -835,7 +834,7 @@ None at this time.
         </a>
       </dt>
       <dd>
-        Appends each vector in <tt><i>list-of-vectors</i></tt>.  This
+        Appends each vector in <code><i>list-of-vectors</i></code>.  This
         is equivalent to:
         <br />
         <br />
@@ -870,7 +869,7 @@ None at this time.
       <dd>
         Returns a vector that contains every element of each <i>vec</i>
         from <i>start</i> to <i>end</i> in the specified order.
-        This procedure is a generalization of <tt>vector-append</tt>.
+        This procedure is a generalization of <code>vector-append</code>.
         <br />
         <br />
         Example:
@@ -899,8 +898,8 @@ None at this time.
       </dt>
       <dd>
         [<a href="#R7RS-small"><i>R7RS-small</i></a>] Disjoint type predicate for
-        vectors: this returns <tt>#t</tt> if <tt><i>x</i></tt> is a
-        vector, and <tt>#f</tt> if otherwise.
+        vectors: this returns <code>#t</code> if <code><i>x</i></code> is a
+        vector, and <code>#f</code> if otherwise.
         <br />
         <br />
         Examples:
@@ -960,8 +959,8 @@ None at this time.
         </a>
       </dt>
       <dd>
-        Returns <tt>#t</tt> if <tt><i>vec</i></tt> is empty, i.e. its
-        length is <tt>0</tt>, and <tt>#f</tt> if not.
+        Returns <code>#t</code> if <code><i>vec</i></code> is empty, i.e. its
+        length is <code>0</code>, and <code>#f</code> if not.
         <br />
         <br />
         Examples:
@@ -1013,16 +1012,16 @@ None at this time.
       </dt>
       <dd>
         Vector structure comparator, generalized across user-specified
-        element comparators.  Vectors <tt><i>a</i></tt> and
-        <tt><i>b</i></tt> are considered equal by <tt>vector=</tt> iff
+        element comparators.  Vectors <code><i>a</i></code> and
+        <code><i>b</i></code> are considered equal by <code>vector=</code> iff
         their lengths are the same, and for each respective element
-        <tt><i>E</i><sub>a</sub></tt> and
-        <tt><i>E</i><sub>b</sub></tt>, <tt>(<i>elt=? E</i><sub>a</sub>
-        <i>E</i><sub>b</sub>)</tt> returns a true value.
-        <tt><i>Elt=?</i></tt> is always applied to two arguments.
+        <code><i>E</i><sub>a</sub></code> and
+        <code><i>E</i><sub>b</sub></code>, <code>(<i>elt=? E</i><sub>a</sub>
+        <i>E</i><sub>b</sub>)</code> returns a true value.
+        <code><i>Elt=?</i></code> is always applied to two arguments.
         <br />
         <br />
-        If there are only zero or one vector arguments, <tt>#t</tt> is
+        If there are only zero or one vector arguments, <code>#t</code> is
         automatically returned.  The dynamic order in which comparisons
         of elements and of vectors are performed is left completely
         unspecified; do not rely on a particular order.
@@ -1090,7 +1089,7 @@ None at this time.
         <br />
         Note the fact that we don't use vector literals in the next two
         &mdash; it is unspecified whether or not literal vectors with
-        the same external representation are <tt>eq?</tt>.
+        the same external representation are <code>eq?</code>.
         <br />
         <br />
         <code class="example-call">
@@ -1124,11 +1123,11 @@ None at this time.
       </dt>
       <dd>
         [<a href="#R7RS-small"><i>R7RS-small</i></a>] Vector element dereferencing:
-        returns the value that the location in <tt><i>vec</i></tt> at
-        <tt><i>i</i></tt> is mapped to in the store.  Indexing is based
-        on zero.  <tt><i>I</i></tt> must be within the range [0,
-        <tt>(<a href="#vector-length">vector-length</a>
-             <i>vec</i>)</tt>).
+        returns the value that the location in <code><i>vec</i></code> at
+        <code><i>i</i></code> is mapped to in the store.  Indexing is based
+        on zero.  <code><i>I</i></code> must be within the range [0,
+        <code>(<a href="#vector-length">vector-length</a>
+             <i>vec</i>)</code>).
         <br />
         <br />
         Example:
@@ -1152,11 +1151,11 @@ None at this time.
         </a>
       </dt>
       <dd>
-        [<a href="#R7RS-small"><i>R7RS-small</i></a>] Returns the length of <tt><i>vec</i></tt>, the number of
-        locations reachable from <tt><i>vec</i></tt>.  (The careful
+        [<a href="#R7RS-small"><i>R7RS-small</i></a>] Returns the length of <code><i>vec</i></code>, the number of
+        locations reachable from <code><i>vec</i></code>.  (The careful
         word 'reachable' is used to allow for 'vector slices,' whereby
-        <tt><i>vec</i></tt> refers to a larger vector that contains
-        more locations that are unreachable from <tt><i>vec</i></tt>.
+        <code><i>vec</i></code> refers to a larger vector that contains
+        more locations that are unreachable from <code><i>vec</i></code>.
         This SRFI does not define vector slices, but later SRFIs may.)
         <br />
         <br />
@@ -1185,21 +1184,21 @@ None at this time.
         </a>
       </dt>
       <dd>
-        The fundamental vector iterator.  <tt><i>Kons</i></tt> is
+        The fundamental vector iterator.  <code><i>Kons</i></code> is
         iterated over each value in all of the vectors, stopping at the
-        end of the shortest; <tt><i>kons</i></tt> is applied as
-        <tt>
+        end of the shortest; <code><i>kons</i></code> is applied as
+        <code>
           (<i>kons</i> <i>state</i>
             (<a href="#vector-ref">vector-ref</a>
              <i>vec<sub>1</sub></i> <i>i</i>)
             (<a href="#vector-ref">vector-ref</a>
              <i>vec<sub>2</sub></i> <i>i</i>)
             ...)
-        </tt>
-        where <tt><i>state</i></tt> is the current state value &mdash;
-        the current state value begins with <tt><i>knil</i></tt>, and
-        becomes whatever <tt><i>kons</i></tt> returned on the
-        previous iteration &mdash;, and <tt><i>i</i></tt> is the
+        </code>
+        where <code><i>state</i></code> is the current state value &mdash;
+        the current state value begins with <code><i>knil</i></code>, and
+        becomes whatever <code><i>kons</i></code> returned on the
+        previous iteration &mdash;, and <code><i>i</i></code> is the
         current index.
         <br />
         <br />
@@ -1210,7 +1209,7 @@ None at this time.
         <br />
         <br />
         Find the longest string's length in
-        <tt><i>vector-of-strings</i></tt>.
+        <code><i>vector-of-strings</i></code>.
         <br />
         <code class="example-call">
           (vector-fold (&lambda; (len str)
@@ -1222,7 +1221,7 @@ None at this time.
         <br />
         <br />
         Produce a list of the reversed elements of
-        <tt><i>vec</i></tt>.
+        <code><i>vec</i></code>.
         <br />
         <code class="example-call">
           (vector-fold (&lambda; (tail elt) (cons elt tail))
@@ -1232,7 +1231,7 @@ None at this time.
         </code>
         <br />
         <br />
-        Count the number of even numbers in <tt><i>vec</i></tt>.
+        Count the number of even numbers in <code><i>vec</i></code>.
         <br />
         <code class="example-call">
           (vector-fold (&lambda; (counter n)
@@ -1255,7 +1254,7 @@ None at this time.
         </a>
       </dt>
       <dd>
-        Similar to <tt><a href="#vector-fold">vector-fold</a></tt>, but
+        Similar to <code><a href="#vector-fold">vector-fold</a></code>, but
         it iterates right to left instead of left to right.
         <br />
         <br />
@@ -1290,16 +1289,16 @@ None at this time.
       <dd>
         [<a href="#R7RS-small"><i>R7RS-small</i></a>]
         Constructs a new vector of the shortest size of the vector
-        arguments.  Each element at index <tt><i>i</i></tt> of the new
+        arguments.  Each element at index <code><i>i</i></code> of the new
         vector is mapped from the old vectors by
-        <tt>(<i>f</i> (<a href="#vector-ref">vector-ref</a>
+        <code>(<i>f</i> (<a href="#vector-ref">vector-ref</a>
               <i>vec<sub>1</sub></i>
               <i>i</i>)
              (<a href="#vector-ref">vector-ref</a>
               <i>vec<sub>2</sub></i>
               <i>i</i>)
-             ...)</tt>.
-        The dynamic order of application of <tt><i>f</i></tt> is
+             ...)</code>.
+        The dynamic order of application of <code><i>f</i></code> is
         unspecified.
         <br />
         <br />
@@ -1380,17 +1379,17 @@ None at this time.
         </a>
       </dt>
       <dd>
-        Similar to <tt><a href="#vector-map">vector-map</a></tt>, but
+        Similar to <code><a href="#vector-map">vector-map</a></code>, but
         rather than mapping the new elements into a new vector, the new
         mapped elements are destructively inserted into
-        <tt><i>vec<sub>1</sub></i></tt>.  Again, the dynamic order of
-        application of <tt><i>f</i></tt> unspecified, so it is
-        dangerous for <tt><i>f</i></tt> to apply either
-        <tt><a href="#vector-ref">vector-ref</a></tt> or
-        <tt><a href="#vector-set-bang">vector-set!</a></tt> to
-        <tt><i>vec<sub>1</sub></i></tt> in <tt><i>f</i></tt>.  It is
-        an error if <tt><i>vec<sub>1</sub></i></tt> contains more
-        elements than any other <tt><i>vec</i></tt>.
+        <code><i>vec<sub>1</sub></i></code>.  Again, the dynamic order of
+        application of <code><i>f</i></code> unspecified, so it is
+        dangerous for <code><i>f</i></code> to apply either
+        <code><a href="#vector-ref">vector-ref</a></code> or
+        <code><a href="#vector-set-bang">vector-set!</a></code> to
+        <code><i>vec<sub>1</sub></i></code> in <code><i>f</i></code>.  It is
+        an error if <code><i>vec<sub>1</sub></i></code> contains more
+        elements than any other <code><i>vec</i></code>.
         <br />
       </dd>
     </dl>
@@ -1404,15 +1403,15 @@ None at this time.
       </dt>
       <dd>
         [<a href="#R7RS-small"><i>R7RS-small</i></a>]
-        Simple vector iterator: applies <tt><i>f</i></tt> to
+        Simple vector iterator: applies <code><i>f</i></code> to
         the corresponding list of parallel elements
-        from <tt><i>vec<sub>1</sub> vec<sub>2</sub></i>
-        ...</tt>
-        in the range [0, <tt><i>length</i></tt>), where
-        <tt><i>length</i></tt> is the length of the smallest vector
+        from <code><i>vec<sub>1</sub> vec<sub>2</sub></i>
+        ...</code>
+        in the range [0, <code><i>length</i></code>), where
+        <code><i>length</i></code> is the length of the smallest vector
         argument passed,
         In contrast with
-        <tt><a href="#vector-map">vector-map</a></tt>, <tt><i>f</i></tt>
+        <code><a href="#vector-map">vector-map</a></code>, <code><i>f</i></code>
         is reliably applied to each subsequent element, starting at
         index 0, in the vectors.
         <br />
@@ -1450,9 +1449,9 @@ zot</pre>
       </dt>
       <dd>
         Counts the number of parallel elements in the vectors that
-        satisfy <tt><i>pred?</i></tt>, which is applied, for each index
-        <tt><i>i</i></tt> in the range [0, <tt><i>length</i></tt>)
-        where <tt><i>length</i></tt> is the length of the
+        satisfy <code><i>pred?</i></code>, which is applied, for each index
+        <code><i>i</i></code> in the range [0, <code><i>length</i></code>)
+        where <code><i>length</i></code> is the length of the
         smallest vector argument, to each
         parallel element in the vectors, in order.
         <br />
@@ -1490,11 +1489,11 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        Returns a newly allocated vector <tt><i>new</i></tt>
-        with the same length as <tt><i>vec</i></tt>.
+        Returns a newly allocated vector <code><i>new</i></code>
+        with the same length as <code><i>vec</i></code>.
         Each element <i>i</i> of <i>new</i> is set to the result of invoking
-        <tt><i>f</i></tt> on <i><tt>new</tt><sub>i-1</sub></i>
-        and <i><tt>vec</tt><sub>i</sub></i>,
+        <code><i>f</i></code> on <i><code>new</code><sub>i-1</sub></i>
+        and <i><code>vec</code><sub>i</sub></i>,
         except that for the first call on <i>f</i>, the first argument is
         <i>knil</i>.  The <i>new</i> vector is returned.
 	<p>Note that the order of arguments to <code>vector-cumulate</code> was changed by <code>errata-3</code> on 2016-09-02.</p>
@@ -1528,10 +1527,10 @@ zot</pre>
       </dt>
       <dd>
         Finds &amp; returns the index of the first elements in
-        <tt><i>vec<sub>1</sub> vec<sub>2</sub>
-        ...</i></tt> that satisfy
-        <tt><i>pred?</i></tt>.  If no matching element is found by the
-        end of the shortest vector, <tt>#f</tt> is returned.
+        <code><i>vec<sub>1</sub> vec<sub>2</sub>
+        ...</i></code> that satisfy
+        <code><i>pred?</i></code>.  If no matching element is found by the
+        end of the shortest vector, <code>#f</code> is returned.
         <br />
         <br />
         Examples:
@@ -1574,7 +1573,7 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        Like <tt><a href="#vector-index">vector-index</a></tt>, but it
+        Like <code><a href="#vector-index">vector-index</a></code>, but it
         searches right-to-left, rather than left-to-right, and all of
         the vectors <i>must</i> have the same length.
         <br />
@@ -1590,11 +1589,11 @@ zot</pre>
       </dt>
       <dd>
         Finds &amp; returns the index of the first elements in
-        <tt><i>vec<sub>1</sub> vec<sub>2</sub>
-        ...</i></tt> that do <i>not</i> satisfy
-        <tt><i>pred?</i></tt>.  If all the values in the vectors
-        satisfy <tt><i>pred?</i></tt> until the end of the shortest
-        vector, this returns <tt>#f</tt>. This is equivalent to:
+        <code><i>vec<sub>1</sub> vec<sub>2</sub>
+        ...</i></code> that do <i>not</i> satisfy
+        <code><i>pred?</i></code>.  If all the values in the vectors
+        satisfy <code><i>pred?</i></code> until the end of the shortest
+        vector, this returns <code>#f</code>. This is equivalent to:
         <br />
         <br />
         <code class="indented">
@@ -1633,7 +1632,7 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        Like <tt><a href="#vector-skip">vector-skip</a></tt>, but it
+        Like <code><a href="#vector-skip">vector-skip</a></code>, but it
         searches for a non-matching element right-to-left, rather than
         left-to-right, and it is an error if all of the vectors do not
         have the same length.  This is equivalent to:
@@ -1663,20 +1662,20 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        <p>Similar to <tt><a href="#vector-index">vector-index</a></tt>
+        <p>Similar to <code><a href="#vector-index">vector-index</a></code>
         and
-        <tt><a href="#vector-index-right">vector-index-right</a></tt>,
+        <code><a href="#vector-index-right">vector-index-right</a></code>,
         but instead of searching left to right or right to left, this
         performs a binary search.
         If there is more than one element of <i>vec</i> that matches
         <i>value</i> in the sense of <i>cmp</i>,
         <code>vector-binary-search</code> may return the index of any of them.</p>
-        <p><tt><i>cmp</i></tt> should be a
+        <p><code><i>cmp</i></code> should be a
         procedure of two arguments and return a negative integer, which
         indicates that its first argument is less than its second,
         zero, which indicates that they are equal, or a positive
         integer, which indicates that the first argument is greater
-        than the second argument.  An example <tt><i>cmp</i></tt> might
+        than the second argument.  An example <code><i>cmp</i></code> might
         be:
         <br />
         <br />
@@ -1714,11 +1713,11 @@ zot</pre>
       </dt>
       <dd>
         Finds the first set of elements in parallel from
-        <tt><i>vec<sub>1</sub> vec<sub>2</sub>
-        ...</i></tt> for which
-        <tt><i>pred?</i></tt> returns a true value.  If such a parallel
-        set of elements exists, <tt>vector-any</tt> returns the value
-        that <tt><i>pred?</i></tt> returned for that set of elements.
+        <code><i>vec<sub>1</sub> vec<sub>2</sub>
+        ...</i></code> for which
+        <code><i>pred?</i></code> returns a true value.  If such a parallel
+        set of elements exists, <code>vector-any</code> returns the value
+        that <code><i>pred?</i></code> returned for that set of elements.
         The iteration is strictly left-to-right.
         <br />
         <br />
@@ -1732,15 +1731,15 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        If, for every index <tt><i>i</i></tt> between 0 and the length
+        If, for every index <code><i>i</i></code> between 0 and the length
         of the shortest vector argument, the set of elements
-        <tt>(<a href="#vector-ref">vector-ref</a> <i>vec<sub>1</sub></i>
+        <code>(<a href="#vector-ref">vector-ref</a> <i>vec<sub>1</sub></i>
                                                  <i>i</i>)
             (<a href="#vector-ref">vector-ref</a> <i>vec<sub>2</sub></i>
                                                  <i>i</i>)
-            ...</tt>
-        satisfies <tt><i>pred?</i></tt>, <tt>vector-every</tt> returns
-        the value that <tt><i>pred?</i></tt> returned for the last
+            ...</code>
+        satisfies <code><i>pred?</i></code>, <code>vector-every</code> returns
+        the value that <code><i>pred?</i></code> returned for the last
         set of elements, at the last index of the shortest vector.  The
         iteration is strictly left-to-right.
         <br />
@@ -1753,16 +1752,16 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        A vector the same size as <tt><i>vec</i></tt> is newly allocated
-        and filled with all the elements of <tt><i>vec</i></tt> that
-        satisfy <tt><i>pred?</i></tt> in their original order followed
-        by all the elements that do not satisfy <tt><i>pred?</i></tt>,
+        A vector the same size as <code><i>vec</i></code> is newly allocated
+        and filled with all the elements of <code><i>vec</i></code> that
+        satisfy <code><i>pred?</i></code> in their original order followed
+        by all the elements that do not satisfy <code><i>pred?</i></code>,
         also in their original order.
 
         <br />
         <br />
         Two values are returned, the newly allocated vector and the number
-        of elements satisfy <tt><i>pred?</i></tt>.
+        of elements satisfy <code><i>pred?</i></code>.
         <br />
         <br />
       </dd>
@@ -1777,8 +1776,8 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        [<a href="#R7RS-small"><i>R7RS-small</i></a>] Assigns the contents of the location at <tt><i>i</i></tt> in
-        <tt><i>vec</i></tt> to <tt><i>value</i></tt>.
+        [<a href="#R7RS-small"><i>R7RS-small</i></a>] Assigns the contents of the location at <code><i>i</i></code> in
+        <code><i>vec</i></code> to <code><i>value</i></code>.
         <br />
         <br />
       </dd>
@@ -1791,8 +1790,8 @@ zot</pre>
       </dt>
       <dd>
         Swaps or exchanges the values of the locations in
-        <tt><i>vec</i></tt> at <tt><i>i</i></tt> &amp;
-        <tt><i>j</i></tt>.
+        <code><i>vec</i></code> at <code><i>i</i></code> &amp;
+        <code><i>j</i></code>.
         <br />
         <br />
       </dd>
@@ -1804,10 +1803,10 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        [<a href="#R7RS-small"><i>R7RS-small</i></a>] Assigns the value of every location in <tt><i>vec</i></tt>
-        between <tt><i>start</i></tt>, which defaults to <tt>0</tt> and
-        <tt><i>end</i></tt>, which defaults to the length of
-        <tt><i>vec</i></tt>, to <tt><i>fill</i></tt>.
+        [<a href="#R7RS-small"><i>R7RS-small</i></a>] Assigns the value of every location in <code><i>vec</i></code>
+        between <code><i>start</i></code>, which defaults to <code>0</code> and
+        <code><i>end</i></code>, which defaults to the length of
+        <code><i>vec</i></code>, to <code><i>fill</i></code>.
         <br />
         <br />
       </dd>
@@ -1820,10 +1819,10 @@ zot</pre>
       </dt>
       <dd>
         Destructively reverses the contents of the sequence of
-        locations in <tt><i>vec</i></tt> between <tt><i>start</i></tt>
-        and <tt><i>end</i></tt>.  <tt><i>Start</i></tt> defaults to
-        <tt>0</tt> and <tt><i>end</i></tt> defaults to the length of
-        <tt><i>vec</i></tt>.  Note that this does not deeply reverse.
+        locations in <code><i>vec</i></code> between <code><i>start</i></code>
+        and <code><i>end</i></code>.  <code><i>Start</i></code> defaults to
+        <code>0</code> and <code><i>end</i></code> defaults to the length of
+        <code><i>vec</i></code>.  Note that this does not deeply reverse.
         <br />
         <br />
       </dd>
@@ -1837,9 +1836,9 @@ zot</pre>
       </dt>
       <dd>
         [<a href="#R7RS-small"><i>R7RS-small</i></a>]
-        Copies the elements of vector <tt><i>from</i></tt>
-        between <tt><i>start</i></tt> and <tt><i>end</i></tt>
-        to vector <tt><i>to</i></tt>, starting at <tt><i>at</i></tt>.
+        Copies the elements of vector <code><i>from</i></code>
+        between <code><i>start</i></code> and <code><i>end</i></code>
+        to vector <code><i>to</i></code>, starting at <code><i>at</i></code>.
         The order in which elements
         are copied is unspecified, except that if the source and destination
         overlap, copying takes place as if the source is first
@@ -1858,8 +1857,8 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        Like <tt><a href="#vector-copy-bang">vector-copy!</a></tt>, but
-        the elements appear in <tt><i>to</i></tt> in reverse order.
+        Like <code><a href="#vector-copy-bang">vector-copy!</a></code>, but
+        the elements appear in <code><i>to</i></code> in reverse order.
         <br />
         <br />
       </dd>
@@ -1870,7 +1869,7 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        Like <tt><a href="#vector-unfold">vector-unfold</a></tt>, but
+        Like <code><a href="#vector-unfold">vector-unfold</a></code>, but
         the elements are copied into the vector <i>vec</i> starting
         at element <i>start</i> rather than into a newly allocated vector.
         Terminates when <i>end-start</i> elements have been generated.
@@ -1884,7 +1883,7 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        Like <tt><a href="#vector-unfold-bang">vector-unfold!</a></tt>, but the
+        Like <code><a href="#vector-unfold-bang">vector-unfold!</a></code>, but the
         elements are copied in reverse order into the vector <i>vec</i>
         starting at the index preceding <i>end</i>.
         <br />
@@ -1903,10 +1902,10 @@ zot</pre>
       </dt>
       <dd>
         [<a href="#R7RS-small"><i>R7RS-small</i></a>]
-        Creates a list containing the elements in <tt><i>vec</i></tt>
-        between <tt><i>start</i></tt>, which defaults to <tt>0</tt>,
-        and <tt><i>end</i></tt>, which defaults to the length of
-        <tt><i>vec</i></tt>.
+        Creates a list containing the elements in <code><i>vec</i></code>
+        between <code><i>start</i></code>, which defaults to <code>0</code>,
+        and <code><i>end</i></code>, which defaults to the length of
+        <code><i>vec</i></code>.
         <br />
         <br />
       </dd>
@@ -1919,9 +1918,9 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        Like <tt><a href="#vector-to-list">vector-&gt;list</a></tt>,
+        Like <code><a href="#vector-to-list">vector-&gt;list</a></code>,
         but the resulting list contains the elements in reverse of
-        <tt><i>vec</i></tt>.
+        <code><i>vec</i></code>.
         <br />
         <br />
       </dd>
@@ -1932,7 +1931,7 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        [<a href="#R7RS-small"><i>R7RS-small</i></a>] Creates a vector of elements from <tt><i>proper-list</i></tt>.
+        [<a href="#R7RS-small"><i>R7RS-small</i></a>] Creates a vector of elements from <code><i>proper-list</i></code>.
         <br />
         <br />
       </dd>
@@ -1943,9 +1942,9 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        Like <tt><a href="#list-to-vector">list-&gt;vector</a></tt>,
+        Like <code><a href="#list-to-vector">list-&gt;vector</a></code>,
         but the resulting vector contains the elements in reverse of
-        <tt><i>proper-list</i></tt>.
+        <code><i>proper-list</i></code>.
         <br />
         <br />
       </dd>
@@ -1957,10 +1956,10 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        [<a href="#R7RS-small"><i>R7RS-small</i></a>] Creates a vector containing the elements in <tt><i>string</i></tt>
-        between <tt><i>start</i></tt>, which defaults to <tt>0</tt>,
-        and <tt><i>end</i></tt>, which defaults to the length of
-        <tt><i>string</i></tt>.
+        [<a href="#R7RS-small"><i>R7RS-small</i></a>] Creates a vector containing the elements in <code><i>string</i></code>
+        between <code><i>start</i></code>, which defaults to <code>0</code>,
+        and <code><i>end</i></code>, which defaults to the length of
+        <code><i>string</i></code>.
         <br />
         <br />
       </dd>
@@ -1972,10 +1971,10 @@ zot</pre>
         </a>
       </dt>
       <dd>
-        [<a href="#R7RS-small"><i>R7RS-small</i></a>] Creates a string containing the elements in <tt><i>vec</i></tt>
-        between <tt><i>start</i></tt>, which defaults to <tt>0</tt>,
-        and <tt><i>end</i></tt>, which defaults to the length of
-        <tt><i>vec</i></tt>.  It is an error if the elements are not characters.
+        [<a href="#R7RS-small"><i>R7RS-small</i></a>] Creates a string containing the elements in <code><i>vec</i></code>
+        between <code><i>start</i></code>, which defaults to <code>0</code>,
+        and <code><i>end</i></code>, which defaults to the length of
+        <code><i>vec</i></code>.  It is an error if the elements are not characters.
         <br />
         <br />
       </dd>
@@ -1988,7 +1987,7 @@ zot</pre>
     <p>
       The sample implementation is in the repository of this SRFI.
       It has only one non-R5RS dependency:
-      <a href="#SRFI-23">SRFI 23</a>'s <tt>error</tt> procedure,
+      <a href="#SRFI-23">SRFI 23</a>'s <code>error</code> procedure,
       which is also provided by R7RS-small.
       It is in the public domain, or alternatively under the same copyright
       as this SRFI.  The following files are provided:
@@ -2011,7 +2010,7 @@ zot</pre>
       Thanks to Olin Shivers for his wonderfully complete
       <a href="#SRFI-1">list</a> and <a href="#SRFI-13">string</a>
       packages; to all the members of the
-      <a href="http://scheme-irc.webhop.org/"><tt>#scheme</tt> IRC
+      <a href="http://scheme-irc.webhop.org/"><code>#scheme</code> IRC
       channel</a> on <a href="http://www.freenode.net/">Freenode</a>
       who nitpicked a great deal, but also helped quite a lot in
       general, and helped test the reference implementation in various
@@ -2108,7 +2107,7 @@ zot</pre>
       <dd>
         <i>SRFI 23: Error Reporting Mechanism</i>
         <br />
-        A SRFI that defines a new primitive (<tt>error</tt>) for
+        A SRFI that defines a new primitive (<code>error</code>) for
         reporting that an error occurred, written by Stephan Houben.
         <br />
         Available at:
@@ -2161,6 +2160,6 @@ zot</pre>
       OTHER DEALINGS IN THE SOFTWARE.
     </p>
     <hr />
-    <address>Editor: <a href="mailto:srfi minus editors at srfi dot schemers dot org">Arthur A. Gleckler</a></address>
+    <address>Editor: <a href="mailto:srfi+minus+editors+at+srfi+dot+schemers+dot+org">Arthur A. Gleckler</a></address>
   </body>
 </html>
