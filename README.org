@@ -1,10 +1,11 @@
+
+# SPDX-FileCopyrightText: 2026 Arthur A. Gleckler
+# SPDX-License-Identifier: MIT
 * SRFI 133: Vector Library (R7RS-compatible)
 
 ** by John Cowan
 
 Based on SRFI 43 by Taylor Campbell.
-
-
 
 keywords: [[https://srfi.schemers.org/?keywords=data-structure][Data Structure]], [[https://srfi.schemers.org/?keywords=r7rs-large][R7RS Large]], [[https://srfi.schemers.org/?keywords=r7rs-large-red][R7RS Large: Red Edition]]
 
@@ -13,14 +14,11 @@ library-name: vectors
 This repository hosts [[https://srfi.schemers.org/srfi-133/][SRFI 133]]: Vector Library (R7RS-compatible), a [[https://srfi.schemers.org/][Scheme Request for Implementation]].
 
 This SRFI is in /final/ status.
-
-See also [[https://srfi.schemers.org/srfi-43/][SRFI 43: Vector library]] and [[https://srfi.schemers.org/srfi-160/][SRFI 160: Homogeneous numeric vector libraries]].
-
+See also [[/srfi-43/][SRFI 43: Vector library]] and [[/srfi-160/][SRFI 160: Homogeneous numeric vector libraries]].
 The full documentation for this SRFI can be found in the [[https://srfi.schemers.org/srfi-133/srfi-133.html][SRFI Document]].
 
 If you'd like to participate in the discussion of this SRFI, or report issues with it, please [[https://srfi.schemers.org/srfi-133/][join the SRFI-133 mailing list]] and send your message there.
 
 Thank you.
-
 
 [[mailto:srfi-editors@srfi.schemers.org][The SRFI Editors]]
